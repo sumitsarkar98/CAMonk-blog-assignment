@@ -8,6 +8,7 @@ import AppLayout from "./components/layout/AppLayout";
 import Home from "./pages/Home";
 import BlogDetails from "./components/BlogDetails";
 import blogData from "@/api/data.json";
+import BlogCreate from "./pages/BlogCreate";
 
 const App = () => {
   const defaultBlogId = blogData.blogs[0].id;
@@ -23,6 +24,7 @@ const App = () => {
             />
             <Route path="blog/:id" element={<BlogDetails />} />
           </Route>
+          <Route path="/blog-post" element={<BlogCreate />}></Route>
         </Route>
       </Routes>
     </Router>

@@ -1,16 +1,28 @@
 import { useParams } from "react-router-dom";
 import blogData from "@/api/data.json";
-import { FaTwitter, FaLinkedin, FaLink } from "react-icons/fa";
+import { FaLink } from "react-icons/fa";
+import type { Blog } from "@/api/types";
 
 const BlogDetails = () => {
   const { id } = useParams<{ id: string }>();
+
+  // Convert id param from string to number
+  const blogId = Number(id);
+
+  // Map JSON to typed Blog array, ensure id is number
+  const blogs: Blog[] = blogData.blogs.map((b) => ({
+    ...b,
+    id: Number(b.id),
+  }));
+
+  // Find the blog by numeric id
+  const blog = blogs.find((b) => b.id === blogId);
+
   // Copy link handler
   const copyLink = () => {
     navigator.clipboard.writeText(window.location.href);
     alert("Link copied to clipboard!");
   };
-
-  const blog = blogData.blogs.find((b) => b.id === id);
 
   if (!blog) {
     return (

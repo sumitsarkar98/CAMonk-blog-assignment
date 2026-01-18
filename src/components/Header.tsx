@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { GiGraduateCap } from "react-icons/gi";
-import { FaUserCircle } from "react-icons/fa";
+import { PiNotePencilDuotone } from "react-icons/pi";
 import { IoMdMenu, IoMdClose } from "react-icons/io";
 import { Link } from "react-router-dom";
 
@@ -34,13 +34,16 @@ const Header = () => {
         <Link to="#" className="hover:text-violet-700">
           Points
         </Link>
+        <Link to="/" className="nav-link-active">
+          Blogs
+        </Link>
       </nav>
 
       {/* Desktop CTA */}
       <div className="hidden lg:flex">
         <button className="bg-violet-700 flex items-center gap-2 px-3 py-2 rounded-md text-white hover:bg-violet-800">
-          <FaUserCircle className="w-5 h-5" />
-          <span className="tracking-wide">Profile</span>
+          <PiNotePencilDuotone size={22} />
+          <Link to="/blog-post">New</Link>
         </button>
       </div>
 
@@ -73,6 +76,13 @@ const Header = () => {
           <Link to="#" className="hover:text-violet-400">
             Points
           </Link>
+          <Link to="/" className="nav-link-active">
+            Blogs
+          </Link>
+          <button className="bg-violet-700 flex items-center gap-2 px-3 py-2 rounded-md text-white hover:bg-violet-800">
+            <PiNotePencilDuotone size={22} />
+            <Link to="/blog-post">New</Link>
+          </button>
         </nav>
       )}
     </header>
