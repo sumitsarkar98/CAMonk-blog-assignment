@@ -1,8 +1,31 @@
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Navigate,
+} from "react-router-dom";
+import AppLayout from "./components/layout/AppLayout";
+import Home from "./pages/Home";
+import BlogDetails from "./components/BlogDetails";
+import blogData from "@/api/data.json";
+
 const App = () => {
+  const defaultBlogId = blogData.blogs[0].id;
+
   return (
-    <div>
-      <h1 className="bg-orange-500">CA MONK</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<Home />}>
+            <Route
+              index
+              element={<Navigate to={`blog/${defaultBlogId}`} replace />}
+            />
+            <Route path="blog/:id" element={<BlogDetails />} />
+          </Route>
+        </Route>
+      </Routes>
+    </Router>
   );
 };
 
